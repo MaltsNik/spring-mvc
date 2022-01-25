@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <link href="css/order_style.css" rel="stylesheet">
+</head>
+<body>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Price</th>
+    </tr>
+    <th:block th:each="order : ${orders}">
+        <tr>
+            <td th:text="${order.title}"></td>
+            <td th:text="${order.price}"></td>
+        </tr>
+    </th:block>
+</table>
+<form action="/createOrder" method="post" th:object="${order}">
+    <input name="title" type="text">
+    <input name="price" type="text">
+    <input type="submit" value="Create order">
+</form>
+</body>
+</html>
